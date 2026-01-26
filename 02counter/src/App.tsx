@@ -9,7 +9,9 @@ function App() {
 
   const removeValue = () => {
     if (counter == 0) {
+      return;
     }
+
     setCounter((prev) => prev - 1);
   };
   return (
