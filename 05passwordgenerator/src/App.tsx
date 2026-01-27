@@ -1,4 +1,4 @@
-import { useState, useCallback } from "react";
+import { useState, useCallback, useRef, useEffect } from "react";
 
 function App() {
   const [length, setLength] = useState(8);
@@ -7,7 +7,10 @@ function App() {
   const [password, setPassword] = useState("");
   const [darkMode, setDarkMode] = useState(true);
 
-  // generate password
+  // useRef Hook
+  const passwordRef = useRef<HTMLInputElement | null>(null);
+
+  // generate password useCallback
   const passwordGenerator = useCallback(() => {
     let pass = "";
     let chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
@@ -25,9 +28,15 @@ function App() {
 
   // copy password
   const copyPassword = () => {
+    passwordRef.current?.select();
     if (!password) return;
     navigator.clipboard.writeText(password);
   };
+
+  //useEffect
+  useEffect(() => {
+    passwordGenerator();
+  }, [passwordGenerator]);
 
   return (
     <main
@@ -59,15 +68,18 @@ function App() {
         </div>
 
         <div className="relative">
-          <div
-            className={`w-full px-3 py-2 text-sm rounded font-mono break-all border ${
+          <input
+            ref={passwordRef}
+            type="text"
+            value={password}
+            readOnly
+            placeholder="••••••••"
+            className={`w-full px-3 py-2 text-sm rounded font-mono border outline-none ${
               darkMode
-                ? "bg-white/5 border-white/10"
-                : "bg-black/5 border-black/10"
+                ? "bg-white/5 border-white/10 text-white"
+                : "bg-black/5 border-black/10 text-black"
             }`}
-          >
-            {password || "••••••••"}
-          </div>
+          />
 
           <button
             onClick={copyPassword}
