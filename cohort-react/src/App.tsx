@@ -1,11 +1,28 @@
+import { useState } from "react";
+
 type HeaderProps = {
-  title: string;
+  title: string | number;
 };
+
+function HeaderWithButton() {
+  const [firstTitle, setFirstTitle] = useState<string | number>("manu sharma");
+
+  function updateMytitle() {
+    setFirstTitle(Math.random());
+  }
+
+  return (
+    <>
+      <button onClick={updateMytitle}>Click me to change the title</button>
+      <Header title={firstTitle} />
+    </>
+  );
+}
 
 function Header({ title }: HeaderProps) {
   return (
     <>
-      <div>title is {title}</div>
+      <div>My name is {title}</div>
     </>
   );
 }
@@ -13,8 +30,8 @@ function Header({ title }: HeaderProps) {
 function App() {
   return (
     <>
+      <HeaderWithButton />
       <Header title={"manu"} />
-      <Header title={"sharma"} />
     </>
   );
 }
