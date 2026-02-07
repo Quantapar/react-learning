@@ -4,7 +4,7 @@ import { useState } from "react";
 type HeaderProps = {
   title: string | number;
 };
-
+import Tester from "./Hooks";
 // normal way , both child of the componenet re render , even tho the prop of only one is changing
 
 // function Header({ title }: HeaderProps) {
@@ -87,6 +87,7 @@ function App() {
       <Header title={"manu"} />
       <Header title={"manu"} />
       <Header title={"manu"} />
+      <Tester />
     </>
   );
 }
