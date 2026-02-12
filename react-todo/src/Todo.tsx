@@ -1,17 +1,16 @@
-import { useState } from "react";
-
 type propType = {
+  id: number;
   title: string;
   desc: string;
 };
 
-export function Todo({ title, desc }: propType) {
-  const [todoTitle, setTodoTitle] = useState("");
-  const [todoDesc, setTodoDesc] = useState("");
+export function Todo({ id, title, desc }: propType) {
   return (
     <>
-      <div>Title {title}</div>
-      <div> Desc {desc}</div>
+      <h3>Id : {id}</h3>
+      <div> Title : {title}</div>
+      <div>Desc : {desc}</div>
+      <br />
     </>
   );
 }
