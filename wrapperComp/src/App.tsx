@@ -1,35 +1,36 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+// real wrapper , 99% of the time we will not use this
+// function App() {
+//   return (
+//     <>
+//       {" "}
+//       <CardWrapper innnerComp={<TextComp />} />
+//       <CardWrapper innnerComp={<TextComp2 />} />
+//     </>
+//   );
+// }
+
+// function TextComp() {
+//   return <div>hi there</div>;
+// }
+
+// function TextComp2() {
+//   return <div>hi there 2</div>;
+// }
+
+// function CardWrapper({ innnerComp }: any) {
+//   return <div style={{ border: "2px solid black" }}>{innnerComp}</div>;
+// }
 
 function App() {
-  const [count, setCount] = useState(0)
-
   return (
     <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
+      <CardWrapper> hi there</CardWrapper>
     </>
-  )
+  );
 }
 
-export default App
+function CardWrapper({ children }: any) {
+  return <div style={{ border: "2px solid black" }}>{children}</div>;
+}
+
+export default App;
