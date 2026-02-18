@@ -1,4 +1,4 @@
-import { memo, useState } from "react";
+import { memo, useCallback, useState } from "react";
 
 type ChildProps = {
   logSomething: () => void;
@@ -7,9 +7,12 @@ type ChildProps = {
 export function App() {
   const [count, setCount] = useState(0);
 
-  function logSomething() {
-    console.log("child clicked");
-  }
+  // function logSomething() {
+  //   console.log("child clicked");
+  // }
+  const logSomething = useCallback(() => {
+    console.log("hi there");
+  }, []);
 
   return (
     <>
