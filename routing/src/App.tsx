@@ -1,5 +1,8 @@
-import { BrowserRouter, Routes, Route, useNavigate } from "react-router-dom";
-import Dashboard from "./componenets/Dashboard";
+import React from "react";
+import { Routes, Route, useNavigate } from "react-router-dom";
+const Dashboard = React.lazy(() => import("./componenets/Dashboard")); // lazy loading ,
+// instead of asking for the whole bundle of html css and js ,
+// the user will only recive the html css and js for that page only
 import Landing from "./componenets/Landing";
 
 export function App() {
